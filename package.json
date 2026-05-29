@@ -13,6 +13,9 @@
   },
   "homepage": "https://github.com/OlgaPotapova684/directory-agent#readme",
   "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
   "type": "module",
   "scripts": {
     "start": "node web/server.js",

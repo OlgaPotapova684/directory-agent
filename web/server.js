@@ -12,10 +12,12 @@ import { fetchLatestVerificationCandidateSimulated } from '../email/simulated-in
 import { pushSimulatedEmail } from '../email/simulated-inbox.js';
 import { runToVerifiedForSite } from '../worker/run-to-verified.js';
 import { getExportRows, rowsToCsv } from '../db/export-data.js';
+import { getPublicBaseUrl, getTrainingRegisterUrl } from '../config/public-url.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
 
 const app = express();
 app.use(express.json());
@@ -56,6 +58,17 @@ const setLogoPathStmt = db.prepare(
    SET logo_path = @logoPath
    WHERE id = @id`
 );
+
+app.get('/api/health', (_req, res) => {
+  res.json({ ok: true });
+});
+
+app.get('/api/config', (_req, res) => {
+  res.json({
+    baseUrl: getPublicBaseUrl(),
+    trainingRegisterUrl: getTrainingRegisterUrl(),
+  });
+});
 
 app.get('/api/catalogs', (_req, res) => {
   try {
@@ -587,7 +600,11 @@ app.post('/api/sites/:id/download-logo', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Сервер запущен: http://localhost:${PORT}`);
+app.listen(PORT, HOST, () => {
+  const base = getPublicBaseUrl();
+  console.log(`Сервер запущен: ${base}`);
+  if (!process.env.PUBLIC_URL) {
+    console.log('Для деплоя задайте PUBLIC_URL=https://ваш-домен');
+  }
   console.log('Остановить: Ctrl+C');
 });

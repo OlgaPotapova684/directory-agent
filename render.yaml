@@ -1,0 +1,18 @@
+# Деплой на Render: https://render.com
+# New → Blueprint → подключить репозиторий directory-agent
+services:
+  - type: web
+    name: directory-agent
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PUBLIC_URL
+        sync: false
+    # Опционально: постоянный диск для SQLite (платный план Render)
+    # disk:
+    #   name: app-data
+    #   mountPath: /app/data
+    #   sizeGB: 1

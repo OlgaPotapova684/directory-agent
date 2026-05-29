@@ -4,6 +4,7 @@ import { chromium } from 'playwright';
 import { processNextCatalogRunForSite } from './process-next.js';
 import { fetchLatestVerificationCandidateSimulated } from '../email/simulated-inbox.js';
 import { verifyTrainingCode } from '../catalogs/training-verify.js';
+import { getPublicBaseUrl, getTrainingRegisterUrl } from '../config/public-url.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -13,7 +14,7 @@ function trainingBaseUrl(registerUrl) {
     const u = new URL(registerUrl);
     return `${u.protocol}//${u.host}`;
   } catch {
-    return 'http://localhost:3000';
+    return getPublicBaseUrl();
   }
 }
 
@@ -55,7 +56,7 @@ export async function runToVerifiedForSite(db, siteId) {
   }
 
   const code = found.code;
-  const baseUrl = trainingBaseUrl(run.registerUrl || 'http://localhost:3000/training-catalog/register');
+  const baseUrl = trainingBaseUrl(run.registerUrl || getTrainingRegisterUrl());
 
   const browser = await chromium.launch({
     headless: true,

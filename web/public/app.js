@@ -497,6 +497,19 @@ form.addEventListener('submit', async (e) => {
   await loadSites();
 });
 
+let appConfig = { trainingRegisterUrl: '/training-catalog/register' };
+
+async function loadAppConfig() {
+  try {
+    const r = await fetch('/api/config');
+    if (r.ok) appConfig = await r.json();
+    const hint = document.getElementById('training-url-hint');
+    if (hint) hint.textContent = appConfig.trainingRegisterUrl;
+  } catch {
+    /* локально без сервера */
+  }
+}
+
 async function loadCatalogSettings() {
   const input = document.getElementById('catalog-01-url');
   const saveBtn = document.getElementById('save-catalog-01');
@@ -530,7 +543,7 @@ async function loadCatalogSettings() {
 
   if (useTrainingBtn) {
     useTrainingBtn.addEventListener('click', async () => {
-      input.value = 'http://localhost:3000/training-catalog/register';
+      input.value = appConfig.trainingRegisterUrl;
       // сразу сохраняем
       const r = await fetch('/api/catalogs/catalog-01', {
         method: 'PATCH',
@@ -553,5 +566,7 @@ async function loadCatalogSettings() {
   }
 }
 
-loadCatalogSettings();
-loadSites();
+loadAppConfig().then(() => {
+  loadCatalogSettings();
+  loadSites();
+});

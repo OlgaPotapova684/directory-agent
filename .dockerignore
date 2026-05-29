@@ -1,0 +1,12 @@
+node_modules
+data/app.db
+data/app.db-*
+data/logos/*
+!data/logos/.gitkeep
+data/simulated-inbox.json
+data/sites.json
+data/traces/*
+.env
+.git
+docs/screenshot-*.png
+*.md

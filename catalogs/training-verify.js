@@ -1,7 +1,9 @@
 /**
  * Ввод кода на странице учебного каталога.
  */
-export async function verifyTrainingCode({ page, email, code, baseUrl = 'http://localhost:3000' }) {
+import { getPublicBaseUrl } from '../config/public-url.js';
+
+export async function verifyTrainingCode({ page, email, code, baseUrl = getPublicBaseUrl() }) {
   await page.goto(`${baseUrl}/training-catalog/verify`, {
     timeout: 30000,
     waitUntil: 'domcontentloaded',
