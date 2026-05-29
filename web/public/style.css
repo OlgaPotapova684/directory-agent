@@ -1,0 +1,311 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #e8e8e8;
+  color: #222;
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+h1 {
+  font-size: 1.35rem;
+  margin: 0 0 8px;
+}
+
+h2 {
+  font-size: 1rem;
+  margin: 0 0 12px;
+}
+
+.hint {
+  color: #555;
+  font-size: 0.9rem;
+  margin: 0 0 20px;
+}
+
+.card {
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  margin-top: 4px;
+  padding: 12px;
+  font-size: 1rem;
+  background: #9e9e9e;
+  color: #111;
+  border: 1px solid #777;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #8a8a8a;
+}
+
+.message {
+  margin: 12px 0 0;
+  font-size: 0.9rem;
+}
+
+.message.ok {
+  color: #1b5e20;
+}
+
+.message.err {
+  color: #b71c1c;
+}
+
+#site-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#site-list li.site-card {
+  padding: 0;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fafafa;
+  font-size: 0.9rem;
+  overflow: hidden;
+}
+
+#site-list li.site-card:last-child {
+  margin-bottom: 0;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.site-card.is-collapsed .site-header {
+  border-bottom: none;
+}
+
+.site-header .site-summary {
+  flex: 1;
+  min-width: 0;
+}
+
+.site-header .site-url {
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.site-summary-meta {
+  color: #555;
+  font-size: 0.85rem;
+  margin-top: 2px;
+}
+
+.toggle-btn {
+  width: 36px;
+  min-width: 36px;
+  padding: 6px 0;
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.site-details {
+  padding: 12px;
+}
+
+.site-card.is-collapsed .site-details {
+  display: none;
+}
+
+.site-row-top {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.site-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.logo-preview {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.logo-ok {
+  color: #1b5e20;
+  font-weight: 600;
+}
+
+.site-url {
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.site-id {
+  font-size: 0.75rem;
+  color: #777;
+  margin-top: 2px;
+}
+
+.no-data {
+  color: #888;
+  font-style: italic;
+}
+
+.company-profile {
+  margin-top: 12px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.company-profile-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.profile-dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 4px 10px;
+  font-size: 0.85rem;
+}
+
+.profile-dl dt {
+  color: #555;
+  margin: 0;
+}
+
+.profile-dl dd {
+  margin: 0;
+  word-break: break-word;
+}
+
+.profile-warn {
+  margin: 8px 0 0;
+}
+
+.result-cell {
+  max-width: 180px;
+  word-break: break-word;
+  font-size: 0.8rem;
+}
+
+.export-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.export-link {
+  display: inline-block;
+  padding: 10px 14px;
+  background: #9e9e9e;
+  color: #111;
+  border: 1px solid #777;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.export-link:hover {
+  background: #8a8a8a;
+}
+
+.site-meta {
+  color: #555;
+  margin-top: 4px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.small-btn {
+  width: auto;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  background: #bdbdbd;
+}
+
+.small-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.catalog-table-wrap {
+  margin-top: 12px;
+  overflow-x: auto;
+}
+
+.catalog-hint {
+  margin: 8px 0 0;
+}
+
+.catalog-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  background: #fff;
+}
+
+.catalog-table th,
+.catalog-table td {
+  border: 1px solid #ccc;
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.catalog-table th {
+  background: #ddd;
+  font-weight: 600;
+}

@@ -1,0 +1,31 @@
+{
+  "name": "directory-agent",
+  "version": "0.1.0",
+  "description": "Web agent for directory registration with Playwright, SQLite, and simulated email",
+  "keywords": ["playwright", "automation", "directories", "sqlite", "express"],
+  "author": "Olga Potapova (https://github.com/OlgaPotapova684)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlgaPotapova684/directory-agent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OlgaPotapova684/directory-agent/issues"
+  },
+  "homepage": "https://github.com/OlgaPotapova684/directory-agent#readme",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node web/server.js",
+    "test-browser": "node scripts/test-browser.js",
+    "worker:once": "node worker/run-once.js",
+    "test-email": "node scripts/test-email.js",
+    "simulate-email": "node scripts/simulate-email.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.2.0",
+    "cheerio": "^1.1.2",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "playwright": "^1.52.0"
+  }
+}

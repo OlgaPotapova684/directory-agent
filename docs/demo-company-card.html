@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Demo — company card</title>
+  <link rel="stylesheet" href="../web/public/style.css" />
+  <style>
+    body { background: #e8e8e8; }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px; }
+    .logo-preview { background: #4a90d9; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.4rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h2>Компании</h2>
+    <ul id="site-list">
+      <li class="site-card">
+        <div class="site-header">
+          <button type="button" class="toggle-btn" disabled>▼</button>
+          <div class="site-summary">
+            <div class="site-url">https://example.com</div>
+            <div class="site-summary-meta">demo@example.com</div>
+          </div>
+        </div>
+        <div class="site-details">
+          <div class="site-row-top">
+            <div class="logo-preview" aria-hidden="true">D</div>
+            <div class="site-main">
+              <div class="site-url">https://example.com</div>
+              <div class="site-id">id: 1000000000001</div>
+              <div class="site-meta">
+                demo@example.com · подтверждено · 01.01.2026, 12:00:00<br />
+                заголовок: Demo Company — учебный пример · обновлено: 01.01.2026, 12:00:00<br />
+                <span class="logo-ok">логотип скачан</span>
+              </div>
+            </div>
+          </div>
+          <div class="company-profile">
+            <div class="company-profile-title">Профиль компании (для каталогов)</div>
+            <dl class="profile-dl">
+              <dt>Название</dt><dd>Demo Company — учебный пример</dd>
+              <dt>Описание</dt><dd>Краткое описание компании для демонстрации агента регистрации в каталогах.</dd>
+              <dt>Сайт</dt><dd>https://example.com</dd>
+              <dt>Email для регистрации</dt><dd>demo@example.com</dd>
+              <dt>Логотип</dt><dd>скачан (data/logos/demo.png)</dd>
+            </dl>
+          </div>
+          <div class="row">
+            <button type="button" class="small-btn" disabled>Собрать данные с сайта</button>
+            <button type="button" class="small-btn" disabled>Скачать логотип</button>
+            <button type="button" class="small-btn" disabled>Создать очередь (5 каталогов)</button>
+          </div>
+          <div class="row">
+            <button type="button" class="small-btn" disabled>Запустить 1 задачу (тест браузера)</button>
+            <button type="button" class="small-btn" disabled>Забрать код (симуляция)</button>
+          </div>
+          <div class="row">
+            <button type="button" class="small-btn" disabled>Прогнать до кода (симуляция)</button>
+            <button type="button" class="small-btn" disabled>Прогнать до подтверждения (учебный)</button>
+          </div>
+          <div class="catalog-table-wrap">
+            <table class="catalog-table">
+              <thead>
+                <tr>
+                  <th>Каталог</th>
+                  <th>Статус</th>
+                  <th>Результат</th>
+                  <th>Логин</th>
+                  <th>Пароль</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Тестовый каталог 1</td>
+                  <td>подтверждено</td>
+                  <td class="result-cell">Учебный каталог: http://localhost:3000/training-catalog</td>
+                  <td>demo@example.com</td>
+                  <td>••••••••</td>
+                </tr>
+                <tr>
+                  <td>Тестовый каталог 2</td>
+                  <td>ожидает</td>
+                  <td class="result-cell">—</td>
+                  <td>—</td>
+                  <td>—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>

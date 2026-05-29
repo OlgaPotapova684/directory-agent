@@ -1,0 +1,12 @@
+node_modules/
+.env
+data/logos/*
+!data/logos/.gitkeep
+data/simulated-inbox.json
+data/sites.json
+data/traces/*
+!data/traces/.gitkeep
+*.db
+*.db-shm
+*.db-wal
+.DS_Store

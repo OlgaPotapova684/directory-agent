@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Сводная таблица — Агент каталогов</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .export-page { max-width: 100%; }
+    .export-toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 16px; }
+    .export-toolbar a { color: #1a0dab; }
+    .full-table-wrap { overflow-x: auto; background: #fff; border: 1px solid #ccc; border-radius: 6px; }
+    .full-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    .full-table th, .full-table td { border: 1px solid #ccc; padding: 6px 8px; text-align: left; vertical-align: top; }
+    .full-table th { background: #ddd; position: sticky; top: 0; }
+    .full-table tr:nth-child(even) { background: #f9f9f9; }
+  </style>
+</head>
+<body>
+  <main class="wrap export-page">
+    <h1>Сводная таблица</h1>
+    <div class="export-toolbar">
+      <a href="/">← Назад к агенту</a>
+      <a href="/api/export.csv" download>Скачать CSV</a>
+      <span id="row-count" class="hint"></span>
+    </div>
+    <div class="full-table-wrap">
+      <table class="full-table" id="export-table">
+        <thead><tr id="export-head"></tr></thead>
+        <tbody id="export-body"></tbody>
+      </table>
+    </div>
+  </main>
+  <script>
+    const HEADERS = [
+      'ID компании', 'Сайт', 'Email', 'Название', 'Описание', 'Логотип',
+      'Каталог', 'Статус', 'Логин', 'Пароль', 'Код', 'Результат', 'Ошибка', 'Обновлено'
+    ];
+    const KEYS = [
+      'siteId', 'siteUrl', 'email', 'scrapedTitle', 'scrapedDescription', 'logoPath',
+      'catalogName', 'status', 'login', 'password', 'verificationCode', 'profileUrl', 'error', 'updatedAt'
+    ];
+
+    function esc(t) {
+      const d = document.createElement('div');
+      d.textContent = t == null ? '' : String(t);
+      return d.innerHTML;
+    }
+
+    async function load() {
+      const res = await fetch('/api/export');
+      const data = await res.json();
+      if (!res.ok) {
+        document.getElementById('row-count').textContent = data.error || 'Ошибка загрузки';
+        return;
+      }
+      document.getElementById('row-count').textContent = 'Строк: ' + data.count;
+
+      const head = document.getElementById('export-head');
+      head.innerHTML = HEADERS.map((h) => '<th>' + esc(h) + '</th>').join('');
+
+      const body = document.getElementById('export-body');
+      body.innerHTML = data.rows
+        .map(
+          (row) =>
+            '<tr>' + KEYS.map((k) => '<td>' + esc(row[k]) + '</td>').join('') + '</tr>'
+        )
+        .join('');
+    }
+
+    load();
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Агент каталогов</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1>Регистрация в каталогах</h1>
+    <p class="hint">Учебный цикл: подключите учебный каталог → «Прогнать до подтверждения».</p>
+
+    <form id="site-form" class="card" autocomplete="off">
+      <label>
+        Адрес сайта
+        <input type="text" name="siteUrl" value="https://" placeholder="chipdip.ru" required autocomplete="off" />
+      </label>
+      <label>
+        Email для регистрации
+        <input type="email" name="email" placeholder="you@company.com" required />
+      </label>
+      <button type="submit">Добавить компанию</button>
+      <p id="message" class="message" hidden></p>
+    </form>
+
+    <section class="card" id="catalog-settings">
+      <h2>Каталог 1 — URL регистрации</h2>
+      <p class="hint">Учебный проект: используйте локальный учебный каталог: <strong>http://localhost:3000/training-catalog/register</strong></p>
+      <label>
+        URL регистрации (Тестовый каталог 1)
+        <input type="url" id="catalog-01-url" placeholder="https://example-catalog.ru/register" />
+      </label>
+      <button type="button" id="save-catalog-01">Сохранить URL</button>
+      <button type="button" id="use-training-catalog">Использовать учебный каталог</button>
+      <button type="button" id="open-training-catalog">Открыть учебный каталог</button>
+    </section>
+
+    <section class="card">
+      <h2>Сводная таблица</h2>
+      <p class="hint">Все компании и каталоги в одном файле — откроется в Excel или Google Таблицах.</p>
+      <div class="export-actions">
+        <a class="export-link" href="/api/export.csv" download>Скачать CSV (Excel)</a>
+        <a class="export-link" href="/export.html" target="_blank" rel="noopener">Открыть таблицу в браузере</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Компании</h2>
+      <p id="empty" class="hint">Пока пусто — добавьте первую компанию в форме выше.</p>
+      <ul id="site-list"></ul>
+    </section>
+  </main>
+  <script src="app.js?v=18"></script>
+</body>
+</html>
