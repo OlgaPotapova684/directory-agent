@@ -2,7 +2,13 @@
   "name": "directory-agent",
   "version": "0.1.0",
   "description": "Web agent for directory registration with Playwright, SQLite, and simulated email",
-  "keywords": ["playwright", "automation", "directories", "sqlite", "express"],
+  "keywords": [
+    "playwright",
+    "automation",
+    "directories",
+    "sqlite",
+    "express"
+  ],
   "author": "Olga Potapova (https://github.com/OlgaPotapova684)",
   "repository": {
     "type": "git",
@@ -29,6 +35,6 @@
     "cheerio": "^1.1.2",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
-    "playwright": "^1.52.0"
+    "playwright": "1.60.0"
   }
 }

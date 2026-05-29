@@ -1,5 +1,5 @@
-# Playwright + Node (Chromium уже в образе)
-FROM mcr.microsoft.com/playwright:v1.52.0-jammy
+# Версия образа = версия playwright в package.json (без ^)
+FROM mcr.microsoft.com/playwright:v1.60.0-jammy
 
 WORKDIR /app
 
